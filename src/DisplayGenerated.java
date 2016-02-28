@@ -21,6 +21,7 @@ import javax.swing.event.ChangeListener;
 public class DisplayGenerated extends JFrame implements ActionListener, ChangeListener {
 	private JTextField phoneField;
 	private JTextField statusField;
+	JSpinner spinner = new JSpinner();
 	// private JTextField emailField;
 	public JCheckBox muteBox = new JCheckBox("Mute All");
 	public JButton test = new JButton("Test Message");
@@ -31,7 +32,8 @@ public class DisplayGenerated extends JFrame implements ActionListener, ChangeLi
 	public int interval = 1;
 	// private String email = "Insert Email here";
 	public String number = "Insert Number here";
-	public boolean muted = false, sendPhone = false, sendEmail = false;
+	public boolean muted = false;
+//			sendPhone = false, sendEmail = false;
 
 	/**
 	 * Create the frame.
@@ -104,8 +106,8 @@ public class DisplayGenerated extends JFrame implements ActionListener, ChangeLi
 		sl_panel_1.putConstraint(SpringLayout.EAST, btnOpenLog, -29, SpringLayout.WEST, muteBox);
 		panel_1.add(btnOpenLog);
 
-		JSpinner spinner = new JSpinner();
 		spinner.setModel(new SpinnerNumberModel(interval, 0, 60, 1));
+		spinner.addChangeListener(this);
 		panel_1.add(spinner);
 
 		JLabel lblMessageInterval = new JLabel("Minutes to Mute After Alert");
@@ -141,7 +143,7 @@ public class DisplayGenerated extends JFrame implements ActionListener, ChangeLi
 
 	@Override
 	public void stateChanged(ChangeEvent c) {
-
+		interval = (int)spinner.getValue();
 	}
 
 	@Override
@@ -149,9 +151,7 @@ public class DisplayGenerated extends JFrame implements ActionListener, ChangeLi
 		String message = e.getActionCommand();
 		if (message.equalsIgnoreCase("test")) {
 		} else if (message.equalsIgnoreCase("mute")) {
-		} else if (message.equalsIgnoreCase("phone")) {
-		} else if (message.equalsIgnoreCase("email")) {
-		} else if (message.equalsIgnoreCase("minimize")) {
+			muted = !muted;
 		} else if (message.equalsIgnoreCase("quit")) {
 			System.exit(0);
 		}

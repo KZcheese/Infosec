@@ -18,6 +18,7 @@ public class ParseTexts {
 			String line;
 			
 			while ((line = reader.readLine()) != null) {
+				
 				commands.add(line);
 
 			}

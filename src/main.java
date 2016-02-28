@@ -26,8 +26,10 @@ public class main {
 	public static void loop() throws InterruptedException{
 		while(true){
 			System.out.println("POLLING");
-			Thread.sleep(1000);
+			Thread.sleep(1000*30);
 
+			
+			
 		}
 		
 		

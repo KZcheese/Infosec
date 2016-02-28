@@ -4,7 +4,6 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
-import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
@@ -15,7 +14,6 @@ import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.SpringLayout;
-import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -23,7 +21,7 @@ import javax.swing.event.ChangeListener;
 public class DisplayGenerated extends JFrame implements ActionListener, ChangeListener {
 	private JTextField phoneField;
 	private JTextField statusField;
-//	private JTextField emailField;
+	// private JTextField emailField;
 	public JCheckBox muteBox = new JCheckBox("Mute All");
 	public JButton test = new JButton("Test Message");
 	public JCheckBox phoneBox = new JCheckBox("Send to Phone");
@@ -31,19 +29,21 @@ public class DisplayGenerated extends JFrame implements ActionListener, ChangeLi
 	private JMenuItem quit = new JMenuItem("Quit");
 	public String status = "Okay";
 	public int interval = 1;
-//	private String email = "Insert Email here";
+	// private String email = "Insert Email here";
 	public String number = "Insert Number here";
 	public boolean muted = false, sendPhone = false, sendEmail = false;
 
 	/**
 	 * Create the frame.
-	 * @throws UnsupportedLookAndFeelException 
-	 * @throws IllegalAccessException 
-	 * @throws InstantiationException 
-	 * @throws ClassNotFoundException 
+	 * 
+	 * @throws UnsupportedLookAndFeelException
+	 * @throws IllegalAccessException
+	 * @throws InstantiationException
+	 * @throws ClassNotFoundException
 	 */
-	public DisplayGenerated() throws ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException {
-//		UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+	public DisplayGenerated() throws ClassNotFoundException, InstantiationException, IllegalAccessException,
+			UnsupportedLookAndFeelException {
+		// UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout(0, 0));
@@ -51,13 +51,13 @@ public class DisplayGenerated extends JFrame implements ActionListener, ChangeLi
 		JPanel panel = new JPanel();
 		getContentPane().add(panel, BorderLayout.SOUTH);
 
-//		JLabel lblEmailAddress = new JLabel("Email Address:");
-//		panel.add(lblEmailAddress);
+		// JLabel lblEmailAddress = new JLabel("Email Address:");
+		// panel.add(lblEmailAddress);
 
-//		emailField = new JTextField();
-//		emailField.setText(email);
-//		panel.add(emailField);
-//		emailField.setColumns(10);
+		// emailField = new JTextField();
+		// emailField.setText(email);
+		// panel.add(emailField);
+		// emailField.setColumns(10);
 
 		JLabel lblPhoneNumber = new JLabel("Phone Number:");
 		panel.add(lblPhoneNumber);
@@ -80,7 +80,7 @@ public class DisplayGenerated extends JFrame implements ActionListener, ChangeLi
 		sl_panel_1.putConstraint(SpringLayout.SOUTH, phoneBox, -6, SpringLayout.NORTH, emailBox);
 		sl_panel_1.putConstraint(SpringLayout.WEST, emailBox, 0, SpringLayout.WEST, muteBox);
 		panel_1.setLayout(sl_panel_1);
-		
+
 		test.addActionListener(this);
 		test.setActionCommand("test");
 		panel_1.add(test);
@@ -88,26 +88,26 @@ public class DisplayGenerated extends JFrame implements ActionListener, ChangeLi
 		muteBox.setSelected(muted);
 		muteBox.setActionCommand("mute");
 		panel_1.add(muteBox);
-//		phoneBox.addActionListener(this);
-//		phoneBox.setSelected(sendPhone);
-//		phoneBox.setActionCommand("phone");
-//		panel_1.add(phoneBox);
-//		emailBox.addActionListener(this);
-//		emailBox.setSelected(sendPhone);
-//		emailBox.setActionCommand("email");
-//		panel_1.add(emailBox);
-		
+		// phoneBox.addActionListener(this);
+		// phoneBox.setSelected(sendPhone);
+		// phoneBox.setActionCommand("phone");
+		// panel_1.add(phoneBox);
+		// emailBox.addActionListener(this);
+		// emailBox.setSelected(sendPhone);
+		// emailBox.setActionCommand("email");
+		// panel_1.add(emailBox);
+
 		JButton btnOpenLog = new JButton("Open Log");
 		sl_panel_1.putConstraint(SpringLayout.NORTH, test, 17, SpringLayout.SOUTH, btnOpenLog);
 		sl_panel_1.putConstraint(SpringLayout.WEST, test, 0, SpringLayout.WEST, btnOpenLog);
 		sl_panel_1.putConstraint(SpringLayout.NORTH, btnOpenLog, 0, SpringLayout.NORTH, muteBox);
 		sl_panel_1.putConstraint(SpringLayout.EAST, btnOpenLog, -29, SpringLayout.WEST, muteBox);
 		panel_1.add(btnOpenLog);
-		
+
 		JSpinner spinner = new JSpinner();
 		spinner.setModel(new SpinnerNumberModel(interval, 0, 60, 1));
 		panel_1.add(spinner);
-		
+
 		JLabel lblMessageInterval = new JLabel("Minutes to Mute After Alert");
 		sl_panel_1.putConstraint(SpringLayout.NORTH, spinner, -3, SpringLayout.NORTH, lblMessageInterval);
 		sl_panel_1.putConstraint(SpringLayout.WEST, spinner, 9, SpringLayout.EAST, lblMessageInterval);
@@ -152,8 +152,7 @@ public class DisplayGenerated extends JFrame implements ActionListener, ChangeLi
 		} else if (message.equalsIgnoreCase("phone")) {
 		} else if (message.equalsIgnoreCase("email")) {
 		} else if (message.equalsIgnoreCase("minimize")) {
-		}
-		else if (message.equalsIgnoreCase("quit")){
+		} else if (message.equalsIgnoreCase("quit")) {
 			System.exit(0);
 		}
 	}

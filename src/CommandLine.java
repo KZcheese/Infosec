@@ -45,7 +45,8 @@ public class CommandLine {
 		    new Thread(new SyncPipe(p.getErrorStream(), System.err)).start();
 		    new Thread(new SyncPipe(p.getInputStream(), System.out)).start();
 		    PrintWriter stdin = new PrintWriter(p.getOutputStream());
-		    stdin.println("perl sendMsg.pl "+number+" \"your computer is being hacked lel\"");
+		    //stdin.println("perl sendMsg.pl "+number+" \"your computer is being hacked lel\"");
+		    stdin.println("echo foo");
 		    // write any other commands you want here
 		    stdin.close();
 		    int returnCode = p.waitFor();

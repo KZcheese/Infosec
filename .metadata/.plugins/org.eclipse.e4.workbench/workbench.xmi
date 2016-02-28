@@ -89,10 +89,10 @@
                 <children xsi:type="advanced:Placeholder" xmi:id="_UX7fUt5PEeW1744NFigTaw" elementId="org.eclipse.egit.ui.RepositoriesView" toBeRendered="false" ref="_UX7fQd5PEeW1744NFigTaw"/>
               </children>
             </children>
-            <children xsi:type="basic:PartSashContainer" xmi:id="_UX7fU95PEeW1744NFigTaw" containerData="7500">
-              <children xsi:type="basic:PartSashContainer" xmi:id="_UX7fVN5PEeW1744NFigTaw" containerData="7500" horizontal="true">
+            <children xsi:type="basic:PartSashContainer" xmi:id="_UX7fU95PEeW1744NFigTaw" containerData="7500" selectedElement="_UX7fVN5PEeW1744NFigTaw">
+              <children xsi:type="basic:PartSashContainer" xmi:id="_UX7fVN5PEeW1744NFigTaw" containerData="7500" selectedElement="_UX7fVt5PEeW1744NFigTaw" horizontal="true">
                 <children xsi:type="advanced:Placeholder" xmi:id="_UX7fVd5PEeW1744NFigTaw" elementId="org.eclipse.ui.editorss" containerData="7500" ref="_UWTHkN5PEeW1744NFigTaw"/>
-                <children xsi:type="basic:PartSashContainer" xmi:id="_UX7fVt5PEeW1744NFigTaw" containerData="2500">
+                <children xsi:type="basic:PartSashContainer" xmi:id="_UX7fVt5PEeW1744NFigTaw" containerData="2500" selectedElement="_UX7fV95PEeW1744NFigTaw">
                   <children xsi:type="basic:PartStack" xmi:id="_UX7fV95PEeW1744NFigTaw" elementId="org.eclipse.mylyn.tasks.ui.views.tasksMStack" containerData="5000" selectedElement="_UX7fWN5PEeW1744NFigTaw">
                     <children xsi:type="advanced:Placeholder" xmi:id="_UX7fWN5PEeW1744NFigTaw" elementId="org.eclipse.mylyn.tasks.ui.views.tasks" ref="_UX7fQ95PEeW1744NFigTaw"/>
                   </children>
@@ -256,7 +256,7 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_TzCCcN5PEeW1744NFigTaw" elementId="org.eclipse.ui.workbench.file">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_TzVkcN5PEeW1744NFigTaw" elementId="print" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" enabled="false" command="_TQpvAN5PEeW1744NFigTaw"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_1GCM0N5SEeWciLFes0QsUw" elementId="print" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" command="_TQpvAN5PEeW1744NFigTaw"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_TzCCcd5PEeW1744NFigTaw" elementId="additions" toBeRendered="false">
         <tags>toolbarSeparator</tags>
@@ -277,7 +277,7 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_TzCCdd5PEeW1744NFigTaw" elementId="org.eclipse.ui.workbench.navigate">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_TzVket5PEeW1744NFigTaw" elementId="org.eclipse.ui.window.pinEditor" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" type="Check" command="_TQpud95PEeW1744NFigTaw"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_1GGeQN5SEeWciLFes0QsUw" elementId="org.eclipse.ui.window.pinEditor" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" type="Check" command="_TQpud95PEeW1744NFigTaw"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_TzCCdt5PEeW1744NFigTaw" elementId="group.editor" toBeRendered="false">
         <tags>toolbarSeparator</tags>

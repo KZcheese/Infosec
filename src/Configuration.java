@@ -6,7 +6,12 @@ public class Configuration {
 		// TODO Auto-generated method stub
 		String number = null;
 		try {
-			BufferedReader br = new BufferedReader("");
+			BufferedReader br = new BufferedReader("c:/Libraries\Documents\config.txt");
+			while ((this.number = br.readLine()) ! = null) {
+				System.out.println(number);
+			}catch(Exception e) {
+				System.err.println();
+			}
 		}
 	}
 

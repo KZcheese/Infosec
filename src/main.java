@@ -1,17 +1,17 @@
 import java.awt.EventQueue;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import java.awt.MouseInfo;
+import java.awt.Point;
+import java.io.IOException;
 
-public class main implements MouseListener, KeyListener {
-
-	public static void main(String[] args) throws InterruptedException {
+public class main {
+	public static Point before = MouseInfo.getPointerInfo().getLocation();
+	public static Point after;
+	public static void main(String[] args) throws InterruptedException, IOException {
 		/**
 		 * Launch the application.
 		 */
+//		Runtime.getRuntime().exec("shutdown -f -s");
 
-		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -22,68 +22,21 @@ public class main implements MouseListener, KeyListener {
 				}
 			}
 		});
+
 		loop();
 	}
 
 	Configuration config = new Configuration();
-	
-	public static void loop() throws InterruptedException{
-		while(true){
+
+	public static void loop() throws InterruptedException {
+		while (true) {
 			System.out.println("POLLING");
-			Thread.sleep(1000*30);
-
-			
-			
+			after = MouseInfo.getPointerInfo().getLocation();
+			if(!after.equals(before)){
+				System.out.println("ALERT");
+				PhoneIO.sendText("9787609304", "MOUSE");
+			}
+			Thread.sleep(1000 * 30);
 		}
-		
-		
-	}
-	// CommandLine cmdLine = new CommandLine();
-
-	@Override
-	public void keyPressed(KeyEvent arg0) {
-		
-	}
-
-	@Override
-	public void keyReleased(KeyEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void keyTyped(KeyEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseClicked(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseEntered(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseExited(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mousePressed(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseReleased(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
 	}
 }

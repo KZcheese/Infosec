@@ -19,7 +19,7 @@ public class ParseTexts {
 			
 			while ((line = reader.readLine()) != null) {
 				commands.add(line);
-				
+
 			}
 			
 		} catch (FileNotFoundException e) {

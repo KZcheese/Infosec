@@ -1,25 +1,24 @@
 import java.awt.BorderLayout;
-import java.awt.Label;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JCheckBoxMenuItem;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
-import javax.swing.JSlider;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
-import javax.swing.SwingConstants;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import javax.swing.JSpinner;
+import javax.swing.SpinnerNumberModel;
 
 public class DisplayGenerated extends JFrame implements ActionListener, ChangeListener {
 	private JTextField txtPhoneNumber;
@@ -29,15 +28,18 @@ public class DisplayGenerated extends JFrame implements ActionListener, ChangeLi
 	private JButton btnTestMessage = new JButton("Test Message");
 	private JCheckBox chckbxSendToPhone = new JCheckBox("Send to Phone");
 	private JCheckBox chckbxSendToEmail = new JCheckBox("Send to Email");
-	private JComboBox comboBox = new JComboBox();
-	private JSlider slider = new JSlider();
 	private JCheckBoxMenuItem chckbxmntmMinimizeOnClose = new JCheckBoxMenuItem("Minimize on Close");
 	private JMenuItem mntmQuit = new JMenuItem("Quit");
 
 	/**
 	 * Create the frame.
+	 * @throws UnsupportedLookAndFeelException 
+	 * @throws IllegalAccessException 
+	 * @throws InstantiationException 
+	 * @throws ClassNotFoundException 
 	 */
-	public DisplayGenerated() {
+	public DisplayGenerated() throws ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException {
+		UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout(0, 0));
@@ -64,38 +66,48 @@ public class DisplayGenerated extends JFrame implements ActionListener, ChangeLi
 		JPanel panel_1 = new JPanel();
 		getContentPane().add(panel_1, BorderLayout.CENTER);
 		SpringLayout sl_panel_1 = new SpringLayout();
+		sl_panel_1.putConstraint(SpringLayout.EAST, btnTestMessage, -33, SpringLayout.WEST, chckbxSendToEmail);
+		sl_panel_1.putConstraint(SpringLayout.WEST, chckbxMute, 239, SpringLayout.WEST, panel_1);
+		sl_panel_1.putConstraint(SpringLayout.NORTH, chckbxSendToEmail, 115, SpringLayout.NORTH, panel_1);
+		sl_panel_1.putConstraint(SpringLayout.SOUTH, chckbxSendToEmail, -45, SpringLayout.SOUTH, panel_1);
+		sl_panel_1.putConstraint(SpringLayout.SOUTH, chckbxMute, -6, SpringLayout.NORTH, chckbxSendToPhone);
+		sl_panel_1.putConstraint(SpringLayout.NORTH, chckbxSendToPhone, 89, SpringLayout.NORTH, panel_1);
+		sl_panel_1.putConstraint(SpringLayout.WEST, chckbxSendToPhone, 0, SpringLayout.WEST, chckbxMute);
+		sl_panel_1.putConstraint(SpringLayout.SOUTH, chckbxSendToPhone, -6, SpringLayout.NORTH, chckbxSendToEmail);
+		sl_panel_1.putConstraint(SpringLayout.WEST, chckbxSendToEmail, 0, SpringLayout.WEST, chckbxMute);
 		panel_1.setLayout(sl_panel_1);
 
 		btnTestMessage.addActionListener(this);
 		btnTestMessage.setActionCommand("test");
 		panel_1.add(btnTestMessage);
-
-		sl_panel_1.putConstraint(SpringLayout.NORTH, chckbxMute, 85, SpringLayout.NORTH, panel_1);
-		sl_panel_1.putConstraint(SpringLayout.WEST, chckbxMute, 164, SpringLayout.WEST, panel_1);
-		sl_panel_1.putConstraint(SpringLayout.WEST, btnTestMessage, 0, SpringLayout.WEST, chckbxMute);
-		sl_panel_1.putConstraint(SpringLayout.SOUTH, btnTestMessage, -14, SpringLayout.NORTH, chckbxMute);
 		chckbxMute.addActionListener(this);
 		chckbxMute.setActionCommand("mute");
 		panel_1.add(chckbxMute);
-
-		sl_panel_1.putConstraint(SpringLayout.NORTH, chckbxSendToPhone, 6, SpringLayout.SOUTH, chckbxMute);
-		sl_panel_1.putConstraint(SpringLayout.WEST, chckbxSendToPhone, 0, SpringLayout.WEST, btnTestMessage);
 		chckbxSendToPhone.addActionListener(this);
 		chckbxSendToPhone.setActionCommand("phone");
 		panel_1.add(chckbxSendToPhone);
-
-		sl_panel_1.putConstraint(SpringLayout.NORTH, chckbxSendToEmail, 6, SpringLayout.SOUTH, chckbxSendToPhone);
-		sl_panel_1.putConstraint(SpringLayout.WEST, chckbxSendToEmail, 0, SpringLayout.WEST, btnTestMessage);
 		chckbxSendToEmail.addActionListener(this);
 		chckbxSendToEmail.setActionCommand("email");
 		panel_1.add(chckbxSendToEmail);
-
-		sl_panel_1.putConstraint(SpringLayout.NORTH, comboBox, 10, SpringLayout.NORTH, panel_1);
-		sl_panel_1.putConstraint(SpringLayout.WEST, comboBox, 154, SpringLayout.WEST, panel_1);
-		comboBox.setModel(new DefaultComboBoxModel(new String[] { "Automatic (Location)", "Manual" }));
-		comboBox.addActionListener(this);
-		comboBox.setActionCommand("combo");
-		panel_1.add(comboBox);
+		
+		JButton btnOpenLog = new JButton("Open Log");
+		sl_panel_1.putConstraint(SpringLayout.NORTH, btnTestMessage, 17, SpringLayout.SOUTH, btnOpenLog);
+		sl_panel_1.putConstraint(SpringLayout.WEST, btnTestMessage, 0, SpringLayout.WEST, btnOpenLog);
+		sl_panel_1.putConstraint(SpringLayout.NORTH, btnOpenLog, 0, SpringLayout.NORTH, chckbxMute);
+		sl_panel_1.putConstraint(SpringLayout.EAST, btnOpenLog, -29, SpringLayout.WEST, chckbxMute);
+		panel_1.add(btnOpenLog);
+		
+		JSpinner spinner = new JSpinner();
+		spinner.setModel(new SpinnerNumberModel(1, 0, 60, 1));
+		panel_1.add(spinner);
+		
+		JLabel lblMessageInterval = new JLabel("Minutes to Mute After Alert");
+		sl_panel_1.putConstraint(SpringLayout.NORTH, spinner, -3, SpringLayout.NORTH, lblMessageInterval);
+		sl_panel_1.putConstraint(SpringLayout.WEST, spinner, 9, SpringLayout.EAST, lblMessageInterval);
+		sl_panel_1.putConstraint(SpringLayout.WEST, btnOpenLog, 0, SpringLayout.WEST, lblMessageInterval);
+		sl_panel_1.putConstraint(SpringLayout.SOUTH, lblMessageInterval, -138, SpringLayout.SOUTH, panel_1);
+		sl_panel_1.putConstraint(SpringLayout.WEST, lblMessageInterval, 107, SpringLayout.WEST, panel_1);
+		panel_1.add(lblMessageInterval);
 
 		JPanel panel_2 = new JPanel();
 		getContentPane().add(panel_2, BorderLayout.NORTH);
@@ -108,24 +120,6 @@ public class DisplayGenerated extends JFrame implements ActionListener, ChangeLi
 		txtStatusHere.setText("Status Here");
 		panel_2.add(txtStatusHere);
 		txtStatusHere.setColumns(10);
-
-		sl_panel_1.putConstraint(SpringLayout.NORTH, slider, 28, SpringLayout.NORTH, panel_1);
-		sl_panel_1.putConstraint(SpringLayout.SOUTH, slider, -11, SpringLayout.SOUTH, panel_1);
-		sl_panel_1.putConstraint(SpringLayout.EAST, slider, -23, SpringLayout.EAST, panel_1);
-		panel_1.add(slider);
-		slider.setSnapToTicks(true);
-		slider.setPaintTicks(true);
-		slider.setPaintLabels(true);
-		slider.setOrientation(SwingConstants.VERTICAL);
-		slider.setMinorTickSpacing(5);
-		slider.setMajorTickSpacing(20);
-		slider.addChangeListener(this);
-
-		Label label = new Label("Distance");
-		sl_panel_1.putConstraint(SpringLayout.NORTH, label, 0, SpringLayout.NORTH, panel_1);
-		sl_panel_1.putConstraint(SpringLayout.EAST, label, -23, SpringLayout.EAST, panel_1);
-		label.setAlignment(Label.CENTER);
-		panel_1.add(label);
 
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -154,9 +148,10 @@ public class DisplayGenerated extends JFrame implements ActionListener, ChangeLi
 		} else if (message.equalsIgnoreCase("mute")) {
 		} else if (message.equalsIgnoreCase("phone")) {
 		} else if (message.equalsIgnoreCase("email")) {
-		} else if (message.equalsIgnoreCase("combo")) {
-			slider.setEnabled(comboBox.getSelectedIndex() == 0);
 		} else if (message.equalsIgnoreCase("minimize")) {
+		}
+		else if (message.equalsIgnoreCase("quit")){
+			System.exit(0);
 		}
 	}
 }

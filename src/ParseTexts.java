@@ -25,8 +25,10 @@ public class ParseTexts {
 			
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 			System.err.println("Cannot Open Texts");
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

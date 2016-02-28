@@ -12,6 +12,14 @@ public class PhoneIO {
 		}
 		
 	}
+	public static void recieveText(){
+		try {
+			Runtime.getRuntime().exec("perl C:/recieveMsg.pl");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	
 	
 }

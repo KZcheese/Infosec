@@ -1,4 +1,6 @@
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Date;
@@ -12,36 +14,23 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-/**F
- * 
- */
-//import java.io.*;
-/**
- * @author Gordon
- *
- */
 public class CommandLine {
 
-	/**
-	 * @param args
-	 */
-	String number;
-	String[] command;
-	
-	public CommandLine(ArrayList<String> commands) {
+	public static void DoCommands(ArrayList<String> commands) throws IOException {
 
 		for(String command: commands){
-			if (command == "shutdown") {
-				System.out.println("shutdown -f -s");
+			
+			if (command == "$shutdown") {
+				Runtime.getRuntime().exec("shutdown -f -s");
 			}
-			if (command == "logoff") {
-				System.out.println("logoff");
+			if (command == "$logoff") {
+				Runtime.getRuntime().exec("logoff");
 			}
-			if (command == "sleep") {
-				System.out.println("powercfg -hibernate off");
+			if (command == "$sleep") {
+				Runtime.getRuntime().exec("powercfg -hibernate off");
 			}
+			
 		}
-
 	
 	}
 

@@ -45,7 +45,7 @@ public class Configuration {
 				} else {
 					switch (c) {//the various commands
 					case "$shutdown":
-						output = "shutdown";
+						output = "shutdown -s -f";
 						cl.close();
 					case "$logoff":
 						output = "logoff";

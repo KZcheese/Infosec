@@ -25,6 +25,7 @@ public class DisplayGenerated extends JFrame implements ActionListener, ChangeLi
 	// private JTextField emailField;
 	public JCheckBox muteBox = new JCheckBox("Mute All");
 	public JButton test = new JButton("Test Message");
+	public boolean testBool = false;
 	public JCheckBox phoneBox = new JCheckBox("Send to Phone");
 	public JCheckBox emailBox = new JCheckBox("Send to Email");
 	private JMenuItem quit = new JMenuItem("Quit");
@@ -45,6 +46,7 @@ public class DisplayGenerated extends JFrame implements ActionListener, ChangeLi
 	 */
 	public DisplayGenerated() throws ClassNotFoundException, InstantiationException, IllegalAccessException,
 			UnsupportedLookAndFeelException {
+		this.setVisible(true);
 		// UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -150,6 +152,7 @@ public class DisplayGenerated extends JFrame implements ActionListener, ChangeLi
 	public void actionPerformed(ActionEvent e) {
 		String message = e.getActionCommand();
 		if (message.equalsIgnoreCase("test")) {
+			testBool = true;
 		} else if (message.equalsIgnoreCase("mute")) {
 			muted = !muted;
 		} else if (message.equalsIgnoreCase("quit")) {

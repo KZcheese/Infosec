@@ -16,18 +16,33 @@ public class CommandLine {
 			//COMMENT PRINTLN & UNCOMMENT RUNTIME COMMANDS
 			if (command.equals("$shutdown")) {
 				
-				//Runtime.getRuntime().exec("shutdown -f -s");
-				System.out.println("shutdown -f -s");
+				try {
+					Runtime.getRuntime().exec("shutdown -f -s");
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				//System.out.println("shutdown -f -s");
 				
 			}else if (command.equals("$logoff")) {
 				
-				//Runtime.getRuntime().exec("logoff");
-				System.out.println("logoff");
+				try {
+					Runtime.getRuntime().exec("logoff");
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				//System.out.println("logoff");
 				
 			}else if (command.equals("$sleep")) {
 				
-				//Runtime.getRuntime().exec("powercfg -hibernate off");
-				System.out.println("powercfg -hibernate off");
+				try {
+					Runtime.getRuntime().exec("powercfg -hibernate off");
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				//System.out.println("powercfg -hibernate off");
 				
 			}else if(command.charAt(0)=="$".charAt(0)){
 				

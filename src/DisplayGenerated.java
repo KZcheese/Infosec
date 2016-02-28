@@ -1,34 +1,32 @@
 import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JTextField;
-import javax.swing.JLabel;
-import java.awt.FlowLayout;
-import javax.swing.SwingConstants;
-import javax.swing.BoxLayout;
-import java.awt.GridBagLayout;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.SpringLayout;
-import javax.swing.JToggleButton;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JCheckBox;
-import javax.swing.JList;
-import javax.swing.AbstractListModel;
-import javax.swing.JSlider;
-import java.awt.TextField;
-import java.awt.Choice;
 import java.awt.Label;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class DisplayGenerated extends JFrame {
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JSlider;
+import javax.swing.JTextField;
+import javax.swing.SpringLayout;
+import javax.swing.SwingConstants;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+
+public class DisplayGenerated extends JFrame implements ActionListener, ChangeListener {
 	private JTextField txtPhoneNumber;
 	private JTextField txtStatusHere;
-	private JTextField txtKevinwzhangmail;
+	private JTextField txtEmail;
+private 		JCheckBox chckbxMute = new JCheckBox("Mute All");
+JButton btnTestMessage = new JButton("Test Message");
+JCheckBox chckbxSendToPhone = new JCheckBox("Send to Phone");
+JCheckBox chckbxSendToEmail = new JCheckBox("Send to Email");
+JComboBox comboBox = new JComboBox();
+JSlider slider = new JSlider();
 
 
 	/**
@@ -45,10 +43,10 @@ public class DisplayGenerated extends JFrame {
 		JLabel lblEmailAddress = new JLabel("Email Address:");
 		panel.add(lblEmailAddress);
 		
-		txtKevinwzhangmail = new JTextField();
-		txtKevinwzhangmail.setText("Email");
-		panel.add(txtKevinwzhangmail);
-		txtKevinwzhangmail.setColumns(10);
+		txtEmail = new JTextField();
+		txtEmail.setText("Email");
+		panel.add(txtEmail);
+		txtEmail.setColumns(10);
 		
 		JLabel lblPhoneNumber = new JLabel("Phone Number:");
 		panel.add(lblPhoneNumber);
@@ -63,30 +61,35 @@ public class DisplayGenerated extends JFrame {
 		SpringLayout sl_panel_1 = new SpringLayout();
 		panel_1.setLayout(sl_panel_1);
 		
-		JButton btnTestMessage = new JButton("Test Message");
+		btnTestMessage.addActionListener(this);
+		btnTestMessage.setActionCommand("test");
 		panel_1.add(btnTestMessage);
 		
-		JCheckBox chckbxEnableAlers = new JCheckBox("Mute All");
-		sl_panel_1.putConstraint(SpringLayout.NORTH, chckbxEnableAlers, 85, SpringLayout.NORTH, panel_1);
-		sl_panel_1.putConstraint(SpringLayout.WEST, chckbxEnableAlers, 164, SpringLayout.WEST, panel_1);
-		sl_panel_1.putConstraint(SpringLayout.WEST, btnTestMessage, 0, SpringLayout.WEST, chckbxEnableAlers);
-		sl_panel_1.putConstraint(SpringLayout.SOUTH, btnTestMessage, -14, SpringLayout.NORTH, chckbxEnableAlers);
-		panel_1.add(chckbxEnableAlers);
+		sl_panel_1.putConstraint(SpringLayout.NORTH, chckbxMute, 85, SpringLayout.NORTH, panel_1);
+		sl_panel_1.putConstraint(SpringLayout.WEST, chckbxMute, 164, SpringLayout.WEST, panel_1);
+		sl_panel_1.putConstraint(SpringLayout.WEST, btnTestMessage, 0, SpringLayout.WEST, chckbxMute);
+		sl_panel_1.putConstraint(SpringLayout.SOUTH, btnTestMessage, -14, SpringLayout.NORTH, chckbxMute);
+		chckbxMute.addActionListener(this);
+		chckbxMute.setActionCommand("mute");
+		panel_1.add(chckbxMute);
 		
-		JCheckBox chckbxSendToPhone = new JCheckBox("Send to Phone");
-		sl_panel_1.putConstraint(SpringLayout.NORTH, chckbxSendToPhone, 6, SpringLayout.SOUTH, chckbxEnableAlers);
+		sl_panel_1.putConstraint(SpringLayout.NORTH, chckbxSendToPhone, 6, SpringLayout.SOUTH, chckbxMute);
 		sl_panel_1.putConstraint(SpringLayout.WEST, chckbxSendToPhone, 0, SpringLayout.WEST, btnTestMessage);
+		chckbxSendToPhone.addActionListener(this);
+		chckbxSendToPhone.setActionCommand("phone");
 		panel_1.add(chckbxSendToPhone);
 		
-		JCheckBox chckbxSendToEmail = new JCheckBox("Send to Email");
 		sl_panel_1.putConstraint(SpringLayout.NORTH, chckbxSendToEmail, 6, SpringLayout.SOUTH, chckbxSendToPhone);
 		sl_panel_1.putConstraint(SpringLayout.WEST, chckbxSendToEmail, 0, SpringLayout.WEST, btnTestMessage);
+		chckbxSendToEmail.addActionListener(this);
+		chckbxSendToEmail.setActionCommand("email");
 		panel_1.add(chckbxSendToEmail);
 		
-		JComboBox comboBox = new JComboBox();
 		sl_panel_1.putConstraint(SpringLayout.NORTH, comboBox, 10, SpringLayout.NORTH, panel_1);
 		sl_panel_1.putConstraint(SpringLayout.WEST, comboBox, 154, SpringLayout.WEST, panel_1);
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Automatic (Location)", "Manual"}));
+		comboBox.addActionListener(this);
+		comboBox.setActionCommand("combo");
 		panel_1.add(comboBox);
 		
 		JPanel panel_2 = new JPanel();
@@ -100,17 +103,11 @@ public class DisplayGenerated extends JFrame {
 		txtStatusHere.setText("Status Here");
 		panel_2.add(txtStatusHere);
 		txtStatusHere.setColumns(10);
+
 		
-		JPanel panel_3 = new JPanel();
-		getContentPane().add(panel_3, BorderLayout.EAST);
-		SpringLayout sl_panel_3 = new SpringLayout();
-		panel_3.setLayout(sl_panel_3);
-		
-		JSlider slider = new JSlider();
 		sl_panel_1.putConstraint(SpringLayout.NORTH, slider, 28, SpringLayout.NORTH, panel_1);
 		sl_panel_1.putConstraint(SpringLayout.SOUTH, slider, -11, SpringLayout.SOUTH, panel_1);
 		sl_panel_1.putConstraint(SpringLayout.EAST, slider, -23, SpringLayout.EAST, panel_1);
-		sl_panel_3.putConstraint(SpringLayout.EAST, slider, 0, SpringLayout.EAST, panel_1);
 		panel_1.add(slider);
 		slider.setSnapToTicks(true);
 		slider.setPaintTicks(true);
@@ -118,11 +115,36 @@ public class DisplayGenerated extends JFrame {
 		slider.setOrientation(SwingConstants.VERTICAL);
 		slider.setMinorTickSpacing(5);
 		slider.setMajorTickSpacing(20);
+		slider.addChangeListener(this);
 		
 		Label label = new Label("Distance");
 		sl_panel_1.putConstraint(SpringLayout.NORTH, label, 0, SpringLayout.NORTH, panel_1);
 		sl_panel_1.putConstraint(SpringLayout.EAST, label, -23, SpringLayout.EAST, panel_1);
 		label.setAlignment(Label.CENTER);
 		panel_1.add(label);
+	}
+
+
+	@Override
+	public void stateChanged(ChangeEvent c) {
+
+	}
+
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		String message = e.getActionCommand();
+		if(message.equalsIgnoreCase("test")){
+		}
+		else if(message.equalsIgnoreCase("mute")){
+		}
+		else if(message.equalsIgnoreCase("phone")){
+		}
+		else if(message.equalsIgnoreCase("email")){
+		}
+		else if(message.equalsIgnoreCase("combo")){
+			slider.setEnabled(comboBox.getSelectedIndex()== 0);
+		}
+		
 	}
 }

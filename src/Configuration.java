@@ -1,18 +1,27 @@
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 public class Configuration {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+	public String Configuration() {
 		String number = null;
 		try {
-			BufferedReader br = new BufferedReader("c:/Libraries\Documents\config.txt");
-			while ((this.number = br.readLine()) ! = null) {
+			BufferedReader br = new BufferedReader(new FileReader("c:/config.txt"));
+			while ((number = br.readLine()) != null) {
 				System.out.println(number);
-			}catch(Exception e) {
-				System.err.println();
+				System.out.println("CONFIGURATION LOADED");
 			}
-		}
+		} catch (FileNotFoundException e) {
+			System.err.println("make the configuration file");
+		} catch (IOException e) {
+			// ioexception thing
+		} finally {br.close();}
+		return number;
 	}
-
 }

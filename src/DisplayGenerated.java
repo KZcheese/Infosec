@@ -134,9 +134,9 @@ public class DisplayGenerated extends JFrame {
 		slider.setMinorTickSpacing(5);
 		slider.setMajorTickSpacing(20);
 		
-		Label label = new Label("<html>Distance<br></br>(Location Only)</html>");
+		Label label = new Label("Distance");
 		sl_panel_1.putConstraint(SpringLayout.NORTH, label, 0, SpringLayout.NORTH, panel_1);
-		sl_panel_1.putConstraint(SpringLayout.EAST, label, 0, SpringLayout.EAST, panel_1);
+		sl_panel_1.putConstraint(SpringLayout.EAST, label, -23, SpringLayout.EAST, panel_1);
 		label.setAlignment(Label.CENTER);
 		panel_1.add(label);
 	}

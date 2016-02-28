@@ -2,11 +2,11 @@ import java.awt.EventQueue;
 
 public class main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		/**
 		 * Launch the application.
 		 */
-		
+
 		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -18,9 +18,19 @@ public class main {
 				}
 			}
 		});
+		loop();
 	}
 
 	Configuration config = new Configuration();
 	
+	public static void loop() throws InterruptedException{
+		while(true){
+			System.out.println("POLLING");
+			Thread.sleep(1000);
+
+		}
+		
+		
+	}
 	// CommandLine cmdLine = new CommandLine();
 }

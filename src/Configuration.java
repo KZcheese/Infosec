@@ -8,21 +8,21 @@ import java.io.IOException;
 public class Configuration {
 
 	public String Configuration() {
-		String number = null;
+		String number = "put number here";
 		String str = "lel";
 		try {
-			BufferedReader br = new BufferedReader(new FileReader("c:/config.txt"));
-			while ((number = br.readLine()) != null) {
-				System.out.println(number);
-				System.out.println("CONFIGURATION LOADED");
-			}
+			BufferedReader br = new BufferedReader(new FileReader("config.txt"));
+//			while ((number = br.readLine()) != null) {
+//				System.out.println(number);
+//				System.out.println("CONFIGURATION LOADED");
+//			}
 			br.close();
 		} catch (FileNotFoundException e) {
 			// System.err.println("make the configuration file");
 			try {
 				BufferedWriter bw = new BufferedWriter(new FileWriter("config.txt"));
 				bw.write(number);
-				bw.write(str);
+				//bw.write(str);
 				bw.close();
 			} catch (IOException errrrrrrrr) {
 				// lel

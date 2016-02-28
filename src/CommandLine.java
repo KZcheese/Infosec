@@ -6,28 +6,33 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Properties;
 
-import javax.mail.Address;
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
 
 public class CommandLine {
 
 	public static void DoCommands(ArrayList<String> commands) throws IOException {
 
 		for(String command: commands){
-			
+			//COMMENT PRINTLN & UNCOMMENT RUNTIME COMMANDS
 			if (command == "$shutdown") {
-				Runtime.getRuntime().exec("shutdown -f -s");
-			}
-			if (command == "$logoff") {
-				Runtime.getRuntime().exec("logoff");
-			}
-			if (command == "$sleep") {
-				Runtime.getRuntime().exec("powercfg -hibernate off");
+				
+				//Runtime.getRuntime().exec("shutdown -f -s");
+				System.out.println("shutdown -f -s");
+				
+			}else if (command == "$logoff") {
+				
+				//Runtime.getRuntime().exec("logoff");
+				System.out.println("logoff");
+				
+			}else if (command == "$sleep") {
+				
+				//Runtime.getRuntime().exec("powercfg -hibernate off");
+				System.out.println("powercfg -hibernate off");
+				
+			}else if(command.charAt(0)=="$".charAt(0)){
+				
+				//Runtime.getRuntime().exec(command.substring(1));
+				System.out.println(command.substring(1));
+				
 			}
 			
 		}

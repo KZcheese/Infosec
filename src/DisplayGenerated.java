@@ -30,21 +30,6 @@ public class DisplayGenerated extends JFrame {
 	private JTextField txtStatusHere;
 	private JTextField txtKevinwzhangmail;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					DisplayGenerated frame = new DisplayGenerated();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.

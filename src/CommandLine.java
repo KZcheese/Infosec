@@ -9,21 +9,22 @@ import java.util.Properties;
 
 public class CommandLine {
 
-	public static void DoCommands(ArrayList<String> commands) throws IOException {
+	public static void DoCommands(ArrayList<String> commands) {
 
 		for(String command: commands){
+			System.out.println("COMMAND: "+ command);
 			//COMMENT PRINTLN & UNCOMMENT RUNTIME COMMANDS
-			if (command == "$shutdown") {
+			if (command.equals("$shutdown")) {
 				
 				//Runtime.getRuntime().exec("shutdown -f -s");
 				System.out.println("shutdown -f -s");
 				
-			}else if (command == "$logoff") {
+			}else if (command.equals("$logoff")) {
 				
 				//Runtime.getRuntime().exec("logoff");
 				System.out.println("logoff");
 				
-			}else if (command == "$sleep") {
+			}else if (command.equals("$sleep")) {
 				
 				//Runtime.getRuntime().exec("powercfg -hibernate off");
 				System.out.println("powercfg -hibernate off");

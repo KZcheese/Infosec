@@ -6,8 +6,6 @@ public class main {
 		/**
 		 * Launch the application.
 		 */
-		
-		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -21,6 +19,5 @@ public class main {
 	}
 
 	Configuration config = new Configuration();
-	
 	// CommandLine cmdLine = new CommandLine();
 }

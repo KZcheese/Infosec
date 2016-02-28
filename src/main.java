@@ -3,14 +3,15 @@ import java.awt.MouseInfo;
 import java.awt.Point;
 import java.io.IOException;
 
-public class main {
-	public static Point before = MouseInfo.getPointerInfo().getLocation();
-	public static Point after;
+public class Main {
+//	Detector detector = new Detector();
+	Point before = MouseInfo.getPointerInfo().getLocation();
+	Point after;
 	public static void main(String[] args) throws InterruptedException, IOException {
 		/**
 		 * Launch the application.
 		 */
-//		Runtime.getRuntime().exec("shutdown -f -s");
+		// Runtime.getRuntime().exec("shutdown -f -s");
 
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -22,21 +23,26 @@ public class main {
 				}
 			}
 		});
-
-		loop();
+		Main main = new Main();
+		main.loop();
 	}
 
 	Configuration config = new Configuration();
 
-	public static void loop() throws InterruptedException {
+	public void loop() throws InterruptedException {
 		while (true) {
-			System.out.println("POLLING");
 			after = MouseInfo.getPointerInfo().getLocation();
-			if(!after.equals(before)){
+			if(!before.equals(after)){
+//			System.out.println("POLLING");
+//			if (detector.getMouseTriggered()
+//			 || detector.getKeyTriggered()) {
+//			) {
 				System.out.println("ALERT");
-				PhoneIO.sendText("9787609304", "MOUSE");
+				before = after;
+				// PhoneIO.sendText("9787609304", "MOUSE");
 			}
-			Thread.sleep(1000 * 30);
+			Thread.sleep(1000 * 10);
 		}
 	}
+
 }

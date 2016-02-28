@@ -17,11 +17,12 @@ public class Configuration {
 				System.out.println(number);
 				System.out.println("CONFIGURATION LOADED");
 			}
+			br.close();
 		} catch (FileNotFoundException e) {
 			System.err.println("make the configuration file");
 		} catch (IOException e) {
 			// ioexception thing
-		} finally {br.close();}
+		}
 		return number;
 	}
 }

@@ -14,7 +14,6 @@ import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.SpringLayout;
-import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -33,8 +32,9 @@ public class DisplayGenerated extends JFrame implements ActionListener, ChangeLi
 	public String status = "Okay";
 	public int interval = 1;
 	// private String email = "Insert Email here";
+	public String number = "Insert Number here";
 	public boolean muted = false;
-	// sendPhone = false, sendEmail = false;
+//			sendPhone = false, sendEmail = false;
 
 	/**
 	 * Create the frame.
@@ -47,7 +47,7 @@ public class DisplayGenerated extends JFrame implements ActionListener, ChangeLi
 	public DisplayGenerated() throws ClassNotFoundException, InstantiationException, IllegalAccessException,
 			UnsupportedLookAndFeelException {
 		this.setVisible(true);
-		UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		// UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout(0, 0));
@@ -67,12 +67,9 @@ public class DisplayGenerated extends JFrame implements ActionListener, ChangeLi
 		panel.add(lblPhoneNumber);
 
 		phoneField = new JTextField();
-		phoneField.setText("Enter Your Number Here");
-		phoneField.setVisible(true);
-		phoneField.setColumns(15);
-		phoneField.addActionListener(this);
-		phoneField.setActionCommand("number");
+		phoneField.setText(number);
 		panel.add(phoneField);
+		phoneField.setColumns(15);
 
 		JPanel panel_1 = new JPanel();
 		getContentPane().add(panel_1, BorderLayout.CENTER);
@@ -87,12 +84,10 @@ public class DisplayGenerated extends JFrame implements ActionListener, ChangeLi
 		sl_panel_1.putConstraint(SpringLayout.SOUTH, phoneBox, -6, SpringLayout.NORTH, emailBox);
 		sl_panel_1.putConstraint(SpringLayout.WEST, emailBox, 0, SpringLayout.WEST, muteBox);
 		panel_1.setLayout(sl_panel_1);
-		test.setVisible(true);
 
 		test.addActionListener(this);
 		test.setActionCommand("test");
 		panel_1.add(test);
-		muteBox.setVisible(true);
 		muteBox.addActionListener(this);
 		muteBox.setSelected(muted);
 		muteBox.setActionCommand("mute");
@@ -107,8 +102,6 @@ public class DisplayGenerated extends JFrame implements ActionListener, ChangeLi
 		// panel_1.add(emailBox);
 
 		JButton btnOpenLog = new JButton("Open Log");
-		btnOpenLog.setVisible(false);
-		btnOpenLog.setEnabled(false);
 		sl_panel_1.putConstraint(SpringLayout.NORTH, test, 17, SpringLayout.SOUTH, btnOpenLog);
 		sl_panel_1.putConstraint(SpringLayout.WEST, test, 0, SpringLayout.WEST, btnOpenLog);
 		sl_panel_1.putConstraint(SpringLayout.NORTH, btnOpenLog, 0, SpringLayout.NORTH, muteBox);
@@ -150,13 +143,9 @@ public class DisplayGenerated extends JFrame implements ActionListener, ChangeLi
 		mnFile.add(quit);
 	}
 
-	public String getNumber() {
-		return phoneField.getText();
-	}
-
 	@Override
 	public void stateChanged(ChangeEvent c) {
-		interval = (int) spinner.getValue();
+		interval = (int)spinner.getValue();
 	}
 
 	@Override
@@ -165,7 +154,7 @@ public class DisplayGenerated extends JFrame implements ActionListener, ChangeLi
 		if (message.equalsIgnoreCase("test")) {
 			testBool = true;
 		} else if (message.equalsIgnoreCase("mute")) {
-			muted = muteBox.isSelected();
+			muted = !muted;
 		} else if (message.equalsIgnoreCase("quit")) {
 			System.exit(0);
 		}

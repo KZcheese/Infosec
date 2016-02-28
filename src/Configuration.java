@@ -18,18 +18,54 @@ public class Configuration {
 			}
 			br.close();
 		} catch (FileNotFoundException e) {
-			//System.err.println("make the configuration file");
+			// System.err.println("make the configuration file");
 			try {
-			BufferedWriter bw = new BufferedWriter(new FileWriter("config.txt"));
-			bw.write(number);
-			bw.write(str);
-			bw.close();
-			} catch(IOException errrrrrrrr) {
-				//lel
+				BufferedWriter bw = new BufferedWriter(new FileWriter("config.txt"));
+				bw.write(number);
+				bw.write(str);
+				bw.close();
+			} catch (IOException errrrrrrrr) {
+				// lel
 			}
 		} catch (IOException e) {
 			// ioexception thing
 		}
 		return number;
+	}
+
+	public String parseCommands() {	
+		try {
+			String output = "lel";
+			BufferedReader cl = new BufferedReader(new FileReader("c:/filepathhere"));
+			String c;
+			while ((c = cl.readLine()) != null) {
+				String[] checkr = c.split("");
+				if (checkr[0] != "$") {
+					return c;
+				} else {
+					switch (c) {
+					case "$shutdown":
+						output = "shutdown";
+						cl.close();
+					case "$logoff":
+						output = "logoff";
+						cl.close();
+					case "$mute":
+						output = "mute";
+						cl.close();
+					case "$test":
+						output = "test";
+						cl.close();
+					}
+				}
+			}
+			cl.close();
+			return output;
+
+		} catch (FileNotFoundException err) {
+			return "something went wrong";
+		} catch (IOException er) {
+			return "something went wrong";
+		}
 	}
 }

@@ -17,12 +17,12 @@ public class CommandLine {
 			if (command.equals("$shutdown")) {
 				
 				try {
-					Runtime.getRuntime().exec("shutdown -f -s");
+					Runtime.getRuntime().exec("shutdown -f -s -t 00");
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				//System.out.println("shutdown -f -s");
+				System.out.println("shutdown -f -s -t 00");
 				
 			}else if (command.equals("$logoff")) {
 				
@@ -32,17 +32,17 @@ public class CommandLine {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				//System.out.println("logoff");
+				System.out.println("shutdown -f -l -t 00");
 				
 			}else if (command.equals("$sleep")) {
 				
 				try {
-					Runtime.getRuntime().exec("powercfg -hibernate off");
+					Runtime.getRuntime().exec("rundll32.exe powrprof.dll,SetSuspendState 0,1,0");
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				//System.out.println("powercfg -hibernate off");
+				System.out.println("powercfg -hibernate off");
 				
 			}else if(command.charAt(0)=="$".charAt(0)){
 				

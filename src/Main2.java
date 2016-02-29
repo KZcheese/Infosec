@@ -18,6 +18,10 @@ public class Main2 {
 
 	public Main2() throws ClassNotFoundException, InstantiationException, IllegalAccessException,
 			UnsupportedLookAndFeelException, InvocationTargetException, InterruptedException {
+		
+		PhoneIO.recieveText();
+		Thread.sleep(1000*5);
+		
 		EventQueue.invokeAndWait(new Runnable() {
 			public void run() {
 				try {

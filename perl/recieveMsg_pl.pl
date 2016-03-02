@@ -1,6 +1,8 @@
 use experimental 'smartmatch';
 use Google::Voice;
- 
+
+
+
 #Google login info
 my $username    = 'abblueprint2k16@gmail.com';
 my $password    = "abidealab";
@@ -10,8 +12,8 @@ if ($num_args != 0) {
     print "\nUsage: recieveMsg.pl \n";
     exit;
 }
-
-my $filename = 'messages';
+unlink("C:\Users\Admin\Desktop\texts");
+my $filename = 'C:\Users\Admin\Desktop\texts';
 
 #Do Not Edit Below Here!
  
